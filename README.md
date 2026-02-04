@@ -4,7 +4,7 @@
 
 ## Add-ons
 
-### KingKiosk Core 3
+### KingKiosk Feature Server
 
 High-performance media kiosk platform with WebRTC streaming, remote browser control, AI-powered quality monitoring, and Home Assistant integration.
 
@@ -13,4 +13,4 @@ High-performance media kiosk platform with WebRTC streaming, remote browser cont
 1. Click the button above, **or** go to **Settings** > **Add-ons** > **Add-on Store** > **...** (top right) > **Repositories**
 2. Paste: `https://github.com/ajarsm/kingkiosk-ha-addon`
 3. Click **Add**
-4. Find "KingKiosk Core 3" in the store and click **Install**
+4. Find "KingKiosk Feature Server" in the store and click **Install**

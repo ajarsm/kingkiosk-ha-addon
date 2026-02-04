@@ -1,6 +1,6 @@
-# KingKiosk Core 3 - Home Assistant Add-on
+# KingKiosk Feature Server - Home Assistant Add-on
 
-KingKiosk Core 3 is a high-performance media kiosk platform providing WebRTC media streaming, remote browser control, and AI-powered quality monitoring.
+KingKiosk Feature Server is a high-performance media kiosk platform providing WebRTC media streaming, remote browser control, and AI-powered quality monitoring.
 
 ## Features
 

@@ -1,7 +1,7 @@
 # Home Assistant Add-on Configuration
 # https://developers.home-assistant.io/docs/add-ons/configuration
 
-name: KingKiosk Core 3
+name: KingKiosk Feature Server
 version: "1.0.0"
 slug: kingkiosk_core3
 description: High-performance media kiosk platform with WebRTC, remote browser control, SIP/VoIP, AI analysis, and Home Assistant integration
@@ -33,7 +33,7 @@ ports_description:
   4000/tcp: "Web interface and WebSocket signaling"
   8554/tcp: "RTSP streaming"
 # Additional ports used (via host_network, no mapping needed):
-#   40000-49999/udp  - MediaSoup RTP (WebRTC, browser sessions, intercom)
+#   40000-49999/udp  - WebRTC RTP media (streaming, browser sessions, intercom)
 #   55000-65000/udp  - SIP RTP media (when SIP is enabled)
 
 # Device access for hardware acceleration
@@ -106,10 +106,6 @@ schema:
   ml_quality_detection: bool
   ha_bridge_enabled: bool
 
-# Environment variables (auto-populated)
-environment:
-  RUST_LOG: "info"
-
 # Service discovery
 discovery:
   - mqtt
@@ -132,5 +128,5 @@ panel_admin: true
 # Labels
 labels:
   io.hass.type: addon
-  io.hass.name: KingKiosk Core 3
+  io.hass.name: KingKiosk Feature Server
   io.hass.description: Media kiosk platform with WebRTC and AI
