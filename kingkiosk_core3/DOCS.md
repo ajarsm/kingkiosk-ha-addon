@@ -90,32 +90,6 @@ Ensure `/dev/dri` is available for GPU acceleration.
 
 The add-on supports Home Assistant Ingress. Access the web interface directly from the sidebar.
 
-## Troubleshooting
-
-### Browser sessions not working
-
-1. Check Xvfb is running: Look for "Starting Xvfb" in logs
-2. Ensure `browser_enabled` is `true`
-3. Check available memory (each session needs ~200MB)
-
-### WebRTC not connecting
-
-1. Set `announced_ip` to your server's public IP
-2. Ensure RTP port range (40000-40100) is open in your firewall
-3. Check for NAT/port forwarding issues
-
-### ML models not loading
-
-1. Place model files in `/share/kingkiosk/models/`
-2. Check file permissions
-3. Ensure `ml_quality_detection` is enabled
-
-### MQTT not connecting
-
-1. Verify Mosquitto add-on is running
-2. Check MQTT discovery is working
-3. Review logs for connection errors
-
 ## Support
 
 - [GitHub Issues](https://github.com/ajarsm/kingkiosk-ha-addon/issues)
