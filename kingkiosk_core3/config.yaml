@@ -115,13 +115,8 @@ auth_api: true
 homeassistant_api: true
 hassio_api: true
 
-# Ingress configuration (web UI proxy)
-ingress: true
-ingress_port: 4000
-ingress_stream: true
-panel_icon: mdi:television
-panel_title: KingKiosk
-panel_admin: true
+# Ingress disabled — no web UI panel in sidebar
+ingress: false
 
 # Labels
 labels:
