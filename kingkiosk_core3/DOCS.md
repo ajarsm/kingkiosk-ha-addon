@@ -4,8 +4,8 @@ KingKiosk Core 3 is a high-performance media kiosk platform providing WebRTC med
 
 ## Features
 
-- **WebRTC Media Server** - Real-time audio/video communication via mediasoup
-- **Remote Browser Control** - Control headless Chromium sessions via CDP
+- **WebRTC Media Server** - Real-time audio/video communication
+- **Remote Browser Control** - Control remote browser sessions
 - **AI Analysis** - Object detection, speech-to-text, quality monitoring
 - **Home Assistant Integration** - MQTT discovery, entity exposure
 
@@ -86,24 +86,6 @@ Ensure `/dev/dri` is available for GPU acceleration.
 | `/share/kingkiosk/recordings/` | Video recordings |
 | `/share/kingkiosk/models/` | AI model files |
 
-## WebSocket API
-
-Connect to `ws://<host>:4000/ws` for signaling. The API follows the same protocol as KingKiosk Core 2 (Node.js version).
-
-### Example: Create Browser Session
-
-```json
-{
-  "request": "createBrowserSession",
-  "id": "req-123",
-  "data": {
-    "url": "https://example.com",
-    "width": 1280,
-    "height": 720
-  }
-}
-```
-
 ## Ingress
 
 The add-on supports Home Assistant Ingress. Access the web interface directly from the sidebar.
@@ -136,5 +118,4 @@ The add-on supports Home Assistant Ingress. Access the web interface directly fr
 
 ## Support
 
-- [GitHub Issues](https://github.com/anthropics/kingkiosk-core3/issues)
-- [Documentation](https://github.com/anthropics/kingkiosk-core3)
+- [GitHub Issues](https://github.com/ajarsm/kingkiosk-ha-addon/issues)
