@@ -15,7 +15,6 @@ KingKiosk Feature Server is a high-performance media kiosk platform providing We
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `log_level` | Logging verbosity (trace/debug/info/warn/error) | `info` |
 | `server_port` | HTTP/WebSocket port | `4000` |
 
 ### MQTT Options

@@ -64,7 +64,6 @@ map:
 
 # Options schema (exposed in UI)
 options:
-  log_level: info
   server_port: 4000
   # go2rtc integration (RTSP export)
   # Example:
@@ -90,7 +89,6 @@ options:
   ha_bridge_enabled: false
 
 schema:
-  log_level: list(trace|debug|info|warn|error)
   server_port: port
   go2rtc_url: str?
   go2rtc_api_url: str?

@@ -1,7 +1,4 @@
 configuration:
-  log_level:
-    name: Log Level
-    description: The logging verbosity level
   server_port:
     name: Server Port
     description: HTTP and WebSocket server port
