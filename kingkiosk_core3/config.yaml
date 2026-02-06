@@ -2,7 +2,7 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration
 
 name: KingKiosk Feature Server
-version: "1.0.96"
+version: "1.0.98"
 slug: kingkiosk_core3
 description: High-performance media kiosk platform with WebRTC, remote browser control, SIP/VoIP, AI analysis, and Home Assistant integration
 url: "https://github.com/ajarsm/kingkiosk-ha-addon"
@@ -29,10 +29,10 @@ timeout: 300
 # Note: host_network=true so all ports are accessible directly.
 # These declarations are for documentation / HA UI display only.
 ports:
-  4000/tcp: 4000      # HTTP + WebSocket
+  4000/tcp: 4000      # King Admin UI + HTTP API + WebSocket
   8554/tcp: 8554      # RTSP
 ports_description:
-  4000/tcp: "Web interface and WebSocket signaling"
+  4000/tcp: "King Admin (/kingadmin), REST API (/api), and WebSocket signaling (/ws)"
   8554/tcp: "RTSP streaming"
 # Additional ports used (via host_network, no mapping needed):
 #   40000-49999/udp  - WebRTC RTP media (streaming, browser sessions, intercom)
@@ -117,8 +117,13 @@ auth_api: true
 homeassistant_api: true
 hassio_api: true
 
-# Ingress disabled — no web UI panel in sidebar
-ingress: false
+# Ingress UI (Home Assistant sidebar and Open Web UI button)
+ingress: true
+ingress_port: 4000
+ingress_stream: true
+panel_icon: mdi:view-dashboard
+panel_title: King Admin
+panel_admin: true
 
 # Labels
 labels:
