@@ -2,6 +2,13 @@
 
 All notable changes to the KingKiosk Feature Server Home Assistant Add-on will be documented in this file.
 
+## [1.0.90] - 2026-02-06
+
+### Fixed
+
+- Resolved remote-browser right-edge clipping by enforcing Chromium window sizing to match the Xvfb capture viewport.
+- Published updated images for both amd64 and aarch64 with the browser sizing fix.
+
 ## [1.0.89] - 2026-02-05
 
 ### Changed
