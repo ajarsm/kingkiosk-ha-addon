@@ -2,6 +2,14 @@
 
 All notable changes to the KingKiosk Feature Server Home Assistant Add-on will be documented in this file.
 
+## [1.0.109] - 2026-02-09
+
+### Changed
+
+- Published updated amd64 and aarch64 images for release `1.0.109`.
+- Switched distributed release publish flow to keep Intel on native amd64 and avoid accidental emulated aarch64 remote builds.
+- Added release cleanup guidance for pruning old distributed artifacts and Docker builder/image caches on both machines.
+
 ## [1.0.107] - 2026-02-09
 
 ### Changed
