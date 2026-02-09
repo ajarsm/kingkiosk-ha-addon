@@ -2,6 +2,35 @@
 
 All notable changes to the KingKiosk Feature Server Home Assistant Add-on will be documented in this file.
 
+## [1.0.106] - 2026-02-09
+
+### Changed
+
+- Published updated amd64 and aarch64 images for release `1.0.106`.
+- Bumped add-on metadata version so Home Assistant can surface the upgrade.
+
+## [1.0.105] - 2026-02-08
+
+### Added
+
+- Offline license validation and management support.
+- Face recognition and named-person event support for AI detections.
+- Add-on documentation for available Piper voices.
+
+### Changed
+
+- Updated Home Assistant ingress and text-to-speech integration flow.
+- Improved add-on packaging to prebuild King Admin web assets once and reuse them across both architectures.
+- Refreshed the dual-architecture publish runbook and release steps.
+- Tuned remote object and face detection cadence for steadier updates.
+
+### Fixed
+
+- Stream ingest changes now apply cleanly without requiring a manual add-on restart.
+- Improved health endpoint behavior and startup robustness.
+- Removed invalid service wiring from the add-on image to reduce startup errors.
+- Improved ARM full-feature build compatibility.
+
 ## [1.0.90] - 2026-02-06
 
 ### Fixed
