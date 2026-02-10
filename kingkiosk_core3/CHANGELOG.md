@@ -2,6 +2,13 @@
 
 All notable changes to the KingKiosk Feature Server Home Assistant Add-on will be documented in this file.
 
+## [1.0.110] - 2026-02-10
+
+### Changed
+
+- Published updated amd64 and aarch64 images for release `1.0.110`.
+- Completed distributed build from the same pinned commit for both architectures and republished GHCR `latest` tags.
+
 ## [1.0.109] - 2026-02-09
 
 ### Changed
