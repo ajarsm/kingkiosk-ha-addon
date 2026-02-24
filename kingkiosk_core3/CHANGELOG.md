@@ -2,6 +2,14 @@
 
 All notable changes to the KingKiosk Feature Server Home Assistant Add-on will be documented in this file.
 
+## [1.0.146] - 2026-02-24
+
+### Changed
+
+- Published updated amd64 and aarch64 images for release `1.0.146`.
+- Reused the validated Intel amd64 artifact and rebuilt aarch64 locally from `kingkiosk-core3` `git.146`.
+- Bundled the latest King Admin web build (`1.0.1+32`) into both architecture images.
+
 ## [1.0.138] - 2026-02-19
 
 ### Changed
