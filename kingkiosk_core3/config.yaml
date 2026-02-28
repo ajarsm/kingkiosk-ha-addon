@@ -2,7 +2,7 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration
 
 name: KingKiosk Feature Server
-version: "1.0.150"
+version: "1.0.152"
 slug: kingkiosk_core3
 description: High-performance media kiosk platform with WebRTC, remote browser control, SIP/VoIP, AI analysis, and Home Assistant integration
 url: "https://github.com/ajarsm/kingkiosk-ha-addon"
