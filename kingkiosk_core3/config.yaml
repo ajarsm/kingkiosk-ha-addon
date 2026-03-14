@@ -30,9 +30,11 @@ timeout: 300
 # These declarations are for documentation / HA UI display only.
 ports:
   4000/tcp: 4000      # King Admin UI + HTTP API + WebSocket
+  4001/tcp: 4001      # HA ingress upstream HTTP listener
   8554/tcp: 8554      # RTSP
 ports_description:
   4000/tcp: "King Admin (/kingadmin), REST API (/api), and WebSocket signaling (/ws)"
+  4001/tcp: "Home Assistant ingress upstream listener (HTTP)"
   8554/tcp: "RTSP streaming"
 # Additional ports used (via host_network, no mapping needed):
 #   40000-49999/udp  - WebRTC RTP media (streaming, browser sessions, intercom)
@@ -119,7 +121,7 @@ hassio_api: true
 
 # Ingress UI (Home Assistant sidebar and Open Web UI button)
 ingress: true
-ingress_port: 4000
+ingress_port: 4001
 ingress_stream: true
 panel_icon: mdi:view-dashboard
 panel_title: King Admin
