@@ -2,7 +2,7 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration
 
 name: KingKiosk Feature Server
-version: "1.0.157"
+version: "1.0.158"
 slug: kingkiosk_core3
 description: High-performance media kiosk platform with WebRTC, remote browser control, SIP/VoIP, AI analysis, and Home Assistant integration
 url: "https://github.com/ajarsm/kingkiosk-ha-addon"
@@ -21,6 +21,7 @@ image: "ghcr.io/ajarsm/kingkiosk-core3-{arch}"
 init: false
 startup: services
 boot: auto
+watchdog: "[PROTO:server_tls_enabled]://[HOST]:[PORT:4000]/health"
 
 # Resource configuration
 timeout: 300
@@ -29,12 +30,12 @@ timeout: 300
 # Note: host_network=true so all ports are accessible directly.
 # These declarations are for documentation / HA UI display only.
 ports:
-  4000/tcp: 4000      # King Admin UI + HTTP API + WebSocket
-  4001/tcp: 4001      # HA ingress upstream HTTP listener
+  4000/tcp: 4000      # King Admin UI + API + WS (or HTTPS/WSS when TLS enabled)
+  4001/tcp: 4001      # HA ingress upstream HTTP listener (source allowlist restricted)
   8554/tcp: 8554      # RTSP
 ports_description:
-  4000/tcp: "King Admin (/kingadmin), REST API (/api), and WebSocket signaling (/ws)"
-  4001/tcp: "Home Assistant ingress upstream listener (HTTP)"
+  4000/tcp: "King Admin (/kingadmin), KingKiosk Web (/kingkioskweb), REST API (/api), and WebSocket signaling (/ws) over HTTP/WS or HTTPS/WSS based on server_tls_enabled"
+  4001/tcp: "Home Assistant ingress upstream listener (HTTP, allowlisted source IP/CIDR only)"
   8554/tcp: "RTSP streaming"
 # Additional ports used (via host_network, no mapping needed):
 #   40000-49999/udp  - WebRTC RTP media (streaming, browser sessions, intercom)
@@ -69,6 +70,11 @@ map:
 # Options schema (exposed in UI)
 options:
   server_port: 4000
+  server_tls_enabled: true
+  server_public_host: ""
+  # Optional token for private raw logs endpoint:
+  #   GET /api/debug/private-logs/{private_logs_token}
+  private_logs_token: ""
   # go2rtc integration (RTSP export)
   # Example:
   #   go2rtc_url: "rtsp://192.168.0.199:8554"
@@ -77,6 +83,9 @@ options:
   go2rtc_api_url: ""
   # MQTT configuration
   mqtt_enabled: true
+  mqtt_use_tls: false
+  mqtt_verify_tls: true
+  mqtt_ca_cert_path: ""
   mqtt_host: ""
   mqtt_port: 1883
   mqtt_username: ""
@@ -87,16 +96,32 @@ options:
   # Browser sessions
   browser_enabled: true
   browser_max_sessions: 5
+  # Signed static web bundle updates
+  web_updates_enabled: true
+  web_update_interval_secs: 3600
+  king_admin_web_manifest_url: ""
+  king_admin_web_public_key: ""
+  kingkiosk_web_manifest_url: ""
+  kingkiosk_web_public_key: ""
   # ML features
-  ml_quality_detection: false
+  ml_quality_detection: true
+  whisper_use_gpu: true
+  whisper_gpu_device: 0
+  whisper_flash_attention: false
   # Home Assistant bridge
   ha_bridge_enabled: false
 
 schema:
   server_port: port
+  server_tls_enabled: bool
+  server_public_host: str?
+  private_logs_token: str?
   go2rtc_url: str?
   go2rtc_api_url: str?
   mqtt_enabled: bool
+  mqtt_use_tls: bool
+  mqtt_verify_tls: bool
+  mqtt_ca_cert_path: str?
   mqtt_host: str?
   mqtt_port: port?
   mqtt_username: str?
@@ -105,7 +130,16 @@ schema:
   announced_ip: str?
   browser_enabled: bool
   browser_max_sessions: int(1,20)
+  web_updates_enabled: bool
+  web_update_interval_secs: int(60,86400)
+  king_admin_web_manifest_url: str?
+  king_admin_web_public_key: str?
+  kingkiosk_web_manifest_url: str?
+  kingkiosk_web_public_key: str?
   ml_quality_detection: bool
+  whisper_use_gpu: bool
+  whisper_gpu_device: int(0,16)
+  whisper_flash_attention: bool
   ha_bridge_enabled: bool
 
 # Service discovery
@@ -121,6 +155,7 @@ hassio_api: true
 
 # Ingress UI (Home Assistant sidebar and Open Web UI button)
 ingress: true
+# Dedicated ingress-only HTTP listener (source allowlist restricted in runtime config).
 ingress_port: 4001
 ingress_stream: true
 panel_icon: mdi:view-dashboard
